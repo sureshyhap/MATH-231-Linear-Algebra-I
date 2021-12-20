@@ -1,0 +1,59 @@
+var split_handle;
+
+var FeatureFlag = function() {
+
+    var authorizationKeyInt = 'pl4fp8b21uph1je7n2scha84lsl80ej6jag4';
+    var authorizationKeyStg = 'aq14dhu5531ri7ie3oo59ikcipqeo9q97452';
+    var authorizationKeyPerf = 'b4gu00p4or6lj4vmm3aqn99jfh0db8fborjm';
+    var authorizationKey = 'ia7l6b0b819i04roh0md212m7pnogelp65q6';
+    var authorizationKeyEditorial = '99vibvdmi0e1bl5v8qp6ff6o37n7ia6e8ske';
+
+    var _getAuthKey = function() {
+        var hostName = window.location.hostname;
+
+        // exact comparison here to avoid dev domain name on daisy
+        if (hostName === 'www.webassign.net' || ((/demo.webassign.net/i).test(hostName))) {
+            return authorizationKey;
+        }
+
+        if ((/editorial.webassign.net/i).test(hostName)) {
+            return authorizationKeyEditorial;
+        }
+              
+        if ((/wa-perf.net/i).test(hostName)) {
+            return authorizationKeyPerf;
+        }
+              
+        if ((/wa-staging.net/i).test(hostName)) {
+            return authorizationKeyStg;
+        }
+              
+        return authorizationKeyInt;
+    }
+
+    var _getCustomerKey = function() {
+        // TODO: get user id of authenticated user if authenticated
+        // TODO: get id of unauthenticated users (anonymous users have a CMP session id stored in a cookie)
+        return 'CUSTOMER_ID';
+    }
+
+    var client = {};
+    // Instantiate the SDK. CDN will expose splitio globally
+    // ...or it does in 99% of cases. Some mixtures of question types and require cause this to fire before it is available
+    try {
+        var factory = splitio({
+            core: {
+                authorizationKey: _getAuthKey(),
+                key: _getCustomerKey(),
+            }
+        });
+
+        // And get the client instance you'll use
+        client = factory.client();    
+        split_handle = factory;
+    } catch (e) {
+        console.log("Could not instantiate splitio client:\n\t" + e);
+    }
+
+    return client;
+}

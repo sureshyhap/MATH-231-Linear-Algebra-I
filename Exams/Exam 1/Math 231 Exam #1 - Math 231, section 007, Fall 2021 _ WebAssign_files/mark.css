@@ -1,0 +1,202 @@
+.waMark {
+  margin: 0 6px 6px 0;
+  padding: 6px;
+  display: inline-block;
+  position: relative;
+  /* IE7 */
+  zoom: 1;
+}
+
+.waMark .badgeWrap {
+  margin: 0;
+  padding: 0;
+  display: block;
+  height: 16px;
+  clear: both;
+}
+
+.waMark .badgeWrap .badge {
+  margin: 0;
+  padding: 0;
+  display: block;
+  height: 16px;
+  width: 16px;
+  overflow: hidden;
+  position: absolute;
+  right: 5px;
+  text-indent: 0;
+}
+
+.waMark .badgeWrap .badge img {
+  outline: 0;
+  display: inline-block;
+  text-align: right;
+}
+
+.waMark.mFeedback {
+  border: 1px solid #5786b7;
+}
+
+.waMark.mCorrect {
+  border: 1px solid #5da035;
+}
+
+.waMark.mIncorrect,
+.waMark.mPartial,
+.waMark.mCalculation {
+  border: 1px solid #d00;
+}
+
+/* grey moves the sprite down to simply show the same badge but grey version */
+.waMark.mGrey {
+  border: 1px solid #ccc;
+}
+
+.waMark.mGrey .badge img {
+  margin-top: -16px;
+}
+
+/* badge styles */
+.waMark.mFeedback .badge {
+  width: 13px;
+  cursor: pointer;
+}
+
+.waMark.mFeedback .badge img {
+  margin-left: -319px;
+}
+
+.waMark.mCorrect .badge {
+  width: 16px;
+}
+
+.waMark.mCorrect .badge img {
+  margin-left: 0;
+}
+
+.waMark.mCorrect.mFeedback .badge {
+  width: 26px;
+}
+
+.waMark.mCorrect.mFeedback .badge img {
+  margin-left: -16px;
+}
+
+.waMark.mIncorrect .badge {
+  width: 14px;
+}
+
+.waMark.mIncorrect .badge img {
+  margin-left: -42px;
+}
+
+.waMark.mIncorrect.mOverride .badge {
+  width: 21px;
+}
+
+.waMark.mIncorrect.mOverride .badge img {
+  margin-left: -56px;
+}
+
+.waMark.mIncorrect.mFeedback .badge {
+  width: 25px;
+}
+
+.waMark.mIncorrect.mFeedback .badge img {
+  margin-left: -78px;
+}
+
+.waMark.mIncorrect.mFeedback.mOverride .badge {
+  width: 31px;
+}
+
+.waMark.mIncorrect.mFeedback.mOverride .badge img {
+  margin-left: -103px;
+}
+
+.waMark.mPartial .badge {
+  width: 16px;
+}
+
+.waMark.mPartial .badge img {
+  margin-left: -134px;
+}
+
+.waMark.mPartial.mOverride .badge {
+  width: 21px;
+}
+
+.waMark.mPartial.mOverride .badge img {
+  margin-left: -150px;
+}
+
+.waMark.mPartial.mFeedback .badge {
+  width: 26px;
+}
+
+.waMark.mPartial.mFeedback .badge img {
+  margin-left: -171px;
+}
+
+.waMark.mPartial.mFeedback.mOverride .badge {
+  width: 31px;
+}
+
+.waMark.mPartial.mFeedback.mOverride .badge img {
+  margin-left: -197px;
+}
+
+.waMark.mCalculation .badge {
+  width: 15px;
+}
+
+.waMark.mCalculation .badge img {
+  margin-left: -228px;
+}
+
+.waMark.mCalculation.mOverride .badge {
+  width: 20px;
+}
+
+.waMark.mCalculation.mOverride .badge img {
+  margin-left: -243px;
+}
+
+.waMark.mCalculation.mFeedback .badge {
+  width: 25px;
+}
+
+.waMark.mCalculation.mFeedback .badge img {
+  margin-left: -263px;
+}
+
+.waMark.mCalculation.mFeedback.mOverride .badge {
+  width: 30px;
+}
+
+.waMark.mCalculation.mFeedback.mOverride .badge img {
+  margin-left: -288px;
+}
+
+/* overriding style to make mark singular with no wrapping */
+.waMark.single {
+  margin: 0 5px;
+  padding: 0;
+  display: inline-block;
+  border: none;
+  float: none;
+  vertical-align: middle;
+  /* IE7 */
+  zoom: 1;
+}
+
+.waMark.single .badge {
+  position: relative;
+}
+
+/* Feedback alternate styling */
+.bContent .altFeedback {
+  margin-bottom: 10px;
+}
+
+/*# sourceMappingURL=mark.css.map */

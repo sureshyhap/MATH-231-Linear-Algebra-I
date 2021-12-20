@@ -1,0 +1,69 @@
+var Linter = function() {
+
+    function isValid(input) {
+        let result = true;
+      
+        // the same character repeated over and over is rejected (cat on keyboard)
+        let pattern = /(.)\1{9,}/;
+        let match = input.match(pattern);
+        if (match) {
+          result = false;
+          console.log('Invalid due to rule #1: ' + input);
+          return result;
+        }
+      
+        let inputCopy = input;
+        inputCopy = inputCopy.replace(/\s+/g, "");
+      
+        // repeated words without spaces (random prose)
+        pattern = /[a-z]{24,}/i;
+        match = inputCopy.match(pattern);
+        if (match) {
+          result = false;
+          console.log('Invalid due to rule #2: ' + input);
+          return result;
+        }
+      
+        // deeply nested parens ((((((((((1/2))))))))))
+        pattern = /[\(\)]/;
+        match = inputCopy.match(pattern);
+        if (match) {
+          let leftParenCount = 0;
+          let rightParenCount = 0;
+          let depth = 1;
+          let maxNested = 0;
+      
+          for (var x = 0; x < inputCopy.length; x++) {
+            var c = inputCopy.charAt(x);
+      
+            if (c === "(") {
+              if (leftParenCount > 0 && leftParenCount !== rightParenCount) {
+                depth++;
+                if (depth > maxNested) {
+                  maxNested = depth;
+                }
+              }
+              leftParenCount++;
+            } else if (c === ")") {
+              depth--;
+              rightParenCount++;
+            } else {
+            }
+          }
+      
+          if (maxNested >= 10) {
+            result = false;
+            console.log('Invalid due to rule #3: ' + input);
+            return result;
+          }
+        }
+      
+        return result;
+      }
+
+      return {
+         isValid: function(input) {
+            return isValid(input);
+        }
+    };
+}
